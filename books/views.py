@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm
+from PIL import Image
+import requests
+from io import BytesIO
 
 from books.models import Book
 
@@ -16,7 +19,7 @@ def book_list(request, template_name='books/book_list.html'):
 
 def book_view(request, pk, template_name='books/book_detail.html'):
     book= get_object_or_404(Book, pk=pk)
-    return render(request, template_name, {'object':book})
+    return render(request, {'object':book})
 
 def book_create(request, template_name='books/book_form.html'):
     """form = BookForm(request.POST or None)

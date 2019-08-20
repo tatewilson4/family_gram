@@ -13,9 +13,8 @@
 <tbody>
     {% for book in object_list %}
     <tr>
-    <td>{{ book.name }}</td>
+    <td><img class='img-responsive' src='{{ book.name.url}}' /></td>
     <td>{{ book.pages }}</td>
-    <td><a href="{% url "book_view" book.id %}">view</a></td>
     <td><a href="{% url "book_edit" book.id %}">edit</a></td>
     <td><a href="{% url "book_delete" book.id %}">delete</a></td>
     </tr>
