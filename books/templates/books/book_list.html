@@ -1,25 +1,22 @@
-<h1>Books</h1>
+{% load static %}
+<h1>Images</h1>
 
 <table border="1">
 <thead>
-    <tr>
-    <th>Name</th>
-    <th>Pages</th>
-    <th>View</th>
-    <th>Edit</th>
-    <th>Delete</th>
-    </tr>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/books.css' %}">
 </thead>
 <tbody>
-    {% for book in object_list %}
-    <tr>
-    <td><img class='img-responsive' src='{{ book.name.url}}' /></td>
-    <td>{{ book.pages }}</td>
-    <td><a href="{% url "book_edit" book.id %}">edit</a></td>
-    <td><a href="{% url "book_delete" book.id %}">delete</a></td>
-    </tr>
-    {% endfor %}
+    <div class="container">
+        {% for book in object_list %}
+        <h2>
+            <ul style="list-style: none;">
+                <li><img class='img-responsive' src='{{ book.name.url}}' /></li>
+                <li>{{ book.pages }}</li>
+            </ul>
+        </h2>
+        {% endfor %}
+    </div>
 </tbody>
 </table>
-
-<a href="{% url "book_new" %}">New</a>
